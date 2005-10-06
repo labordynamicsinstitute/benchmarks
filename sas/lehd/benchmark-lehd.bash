@@ -1,5 +1,5 @@
 #!/bin/bash
-# $Date$ $Rev$ $Author$
+# $Id$
 # $HeadURL$
 
 # set up parameters
