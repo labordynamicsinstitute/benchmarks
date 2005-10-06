@@ -1,5 +1,5 @@
 /*============================================================
-$Date$ $Rev$ $Author$
+$Id$
 $HeadURL$
  
            How to run this code
