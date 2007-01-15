@@ -1,12 +1,18 @@
 #!/bin/bash
 # $Id$
 # $HeadURL$
-
+# 
+# SETUP
+# copy this script to a subdirectory, edit the workdir to your needs,
+# and run with 
+#  ./bechmark-lehd.bash
+#
 # set up parameters
 threads=2
 loops=2
 workdir=/tmp
-progdir=$(dirname $0)
+progdir=$(dirname $0)/..
+logdir=$(dirname $0)
 
 loop=1
 while [[ $loop -le  $loops ]]
