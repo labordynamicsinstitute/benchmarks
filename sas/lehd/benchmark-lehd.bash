@@ -23,7 +23,7 @@ do
   pids=
   while [[ $thread -le $threads ]]
   do
-  sas -work $workdir -log ${progdir}/benchmark-lehd.loop${loop}.thread${thread}.log ${progdir}/benchmark-lehd.sas &
+  sas -work $workdir -log ${logdir}/benchmark-lehd.loop${loop}.thread${thread}.log ${progdir}/benchmark-lehd.sas &
     pid=$!
     pids="$pids $pid"
     echo " Loop: $loop/$loops    Thread: $thread/$threads    PID: $pid  "
