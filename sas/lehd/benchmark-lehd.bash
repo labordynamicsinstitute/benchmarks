@@ -3,14 +3,28 @@
 # $HeadURL$
 # 
 # SETUP
-# copy this script to a subdirectory, edit the workdir to your needs,
+# copy this script to a subdirectory, edit the workdir variable to your needs,
 # and run with 
-#  ./bechmark-lehd.bash
+#  mkdir mytest-no1
+#  cd mytest-no1
+#  sed 's+workdir=/tmp+workdir=/whatever+' \
+#    ../benchmark-lehd.bash > benchmark-lehd.bash
+#  chmod u+rx *bash
+#  ./benchmark-lehd.bash
 #
-# set up parameters
-threads=2
+# set up parameters. 
+# THREADS: This should ideally load the system. I.e., set it to the number
+# of CPUs on the system, or higher.
+threads=32
+# LOOPS: this is the number of times you run through all THREADS threads
+# if you think that your system performance is stable, =2 is sufficient,
+# otherwise, run it again.
 loops=2
+# WORKDIR: defines where SAS writes (most) of its files. See additional
+# notes in the SAS program
 workdir=/tmp
+# You Should leave these as is. The SAS program should be one directory up
+# logs should be written to the current dir (mytest-no1)
 progdir=$(dirname $0)/..
 logdir=$(dirname $0)
 
