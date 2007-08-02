@@ -143,7 +143,7 @@ data INTERWRK.copy_wide_file;
      set INPUTS.create_wide_file;
 run;
 
-proc sort data=INTERWRK.copy_wide_file out=INTEWRK.sort_copy_wide_file;
+proc sort data=INTERWRK.copy_wide_file out=INTERWRK.sort_copy_wide_file;
 by x1 x&nvars2 x&nvars.;
 run;
 
