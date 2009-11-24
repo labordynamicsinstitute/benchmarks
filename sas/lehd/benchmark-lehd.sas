@@ -32,6 +32,20 @@ $HeadURL$
 
 . This behavior can be changed  in the following lines, 
   by changing the libname definitions.
+
+  To change the load, there are two ways:
+
+  * easy: modify the let size= statement below. 
+          If size=small, only a small dataset
+          gets created. If size= blank, 
+          a large dataset gets created.
+  * detailed: if the large dataset is too small,
+          modify the following parameters in the code
+          below: NOBS, NVARS, NVARS2. NOBS makes the
+          file "longer", NVARS make the file wider
+          (and the processing more intense).
+
+
 ==================================================*/
 
 libname INPUTS (WORK);
