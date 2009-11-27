@@ -9,6 +9,8 @@
 #  cd mytest-no1
 #  sed 's+workdir=/tmp+workdir=/whatever+' \
 #    ../benchmark-lehd.bash > benchmark-lehd.bash
+#  cp ../benchmark-lehd.config.sas
+#  # (edit to your liking)
 #  chmod u+rx *bash
 #  ./benchmark-lehd.bash
 #
