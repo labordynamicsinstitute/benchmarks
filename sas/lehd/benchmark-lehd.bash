@@ -15,16 +15,9 @@
 #  ./benchmark-lehd.bash
 #
 # set up parameters. 
-# THREADS: This should ideally load the system. I.e., set it to the number
-# of CPUs on the system, or higher.
-threads=2
-# LOOPS: this is the number of times you run through all THREADS threads
-# if you think that your system performance is stable, =2 is sufficient,
-# otherwise, run it again.
-loops=3
-# WORKDIR: defines where SAS writes (most) of its files. See additional
-# notes in the SAS program
-[[ -z $1 ]] && workdir=/tmp || workdir=$1
+
+. $0.config
+
 # sanity check: is this really a directory
 if [[ ! -d $workdir ]]
 then
