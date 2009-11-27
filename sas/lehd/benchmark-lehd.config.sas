@@ -20,6 +20,8 @@ libname OUTPUTS (WORK);
 %macro cleanup;
 
 /* assumes that interwrk is per-job */
+ %put Removing &interwrk.;
+
 x rm -rf &interwrk.;
 
 %mend;

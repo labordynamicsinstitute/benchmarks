@@ -42,18 +42,32 @@ fi
 # You Should leave these as is. The SAS program should be one directory up
 # logs should be written to the current dir (mytest-no1)
 progdir=$(dirname $0)/..
+progsuffix=
 logdir=$(dirname $0)
 delay=0
 
 # print out config
 echo " Running benchmark test with following parameters:"
-echo "  Workdir=$workdir"
-echo "  Progdir=$progdir"
-echo "  Logdir =$logdir"
-echo "  Delay  =$delay (in seconds, between launching of jobs)"
+echo "  Workdir   =$workdir"
+echo "  Progdir   =$progdir"
+echo "  Progsuffix=$progsuffix"
+echo "  Logdir    =$logdir"
+echo "  Delay     =$delay (in seconds, between launching of jobs)"
 echo " The following parameter will be passed through to the SAS program:"
 echo "  (size=) $size"
 
+loop=0
+thread=1
+  # burn-in phase: one run through to get the disks spinning
+  sas -work $workdir \
+      -log ${logdir}/burn-in.loop${loop}.thread${thread}.log \
+      -sysparm $size\
+      ${progdir}/benchmark-lehd${progsuffix}.sas &
+    pid=$!
+    echo " Burn-in: 1/1     Thread: $thread/$thread    PID: $pid  "
+  printf "\n%-50s" " Waiting for PIDS $pid"
+  wait $pids
+  printf "%10s\n\n" "[done]"
 loop=1
 while [[ $loop -le  $loops ]]
 do
@@ -66,7 +80,7 @@ do
   sas -work $workdir \
       -log ${logdir}/benchmark-lehd.loop${loop}.thread${thread}.log \
       -sysparm $size\
-      ${progdir}/benchmark-lehd.sas &
+      ${progdir}/benchmark-lehd${progsuffix}.sas &
     pid=$!
     pids="$pids $pid"
     echo " Loop: $loop/$loops    Thread: $thread/$threads    PID: $pid  "
