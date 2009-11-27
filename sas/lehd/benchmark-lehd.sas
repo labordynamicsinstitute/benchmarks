@@ -69,28 +69,22 @@ libname OUTPUTS (WORK);
 /*==================================================
    turn off after testing 
 ==================================================*/
-%let size=small;
+%let size=&sysparm;
 
 %macro checkobs;
 
 %global nobs nvars nvars2;
-%if ( "&sysparm" = "" ) %then
-    %if ( "&size" = "small" ) %then %do;
-       %let nobs=100;
-       %let nvars=50;
-       %let nvars2=25;
+    %if ( "&size" = "large" ) %then %do;
+       %let nobs=50000;
+       %let nvars=5000;
+       %let nvars2=2500;
        %end;
     %else %do;
-	%let nobs=50000;
-	%let nvars=5000;
-	%let nvars2=2500;
+	%let nobs=500;
+	%let nvars=50;
+	%let nvars2=25;
 	%end;
 
-%else %do;
-    %let nobs=&sysparm;
-    %let nvars=5000;
-    %let nvars2=2500;
-%end;
 
 
 %put ;
