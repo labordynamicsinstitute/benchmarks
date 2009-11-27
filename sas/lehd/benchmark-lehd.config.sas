@@ -4,6 +4,7 @@
 libname INPUTS (WORK);
 * libname INPUTS "/path/to/inputs";
 libname INTERWRK (WORK);
+* libname INTERWRK "/tmp/job&sysjobid.";
 * libname INTERWRK "/path/to/interwrk";
 libname OUTPUTS (WORK);
 * libname OUTPUTS "/path/to/outputs";

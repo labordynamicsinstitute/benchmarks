@@ -77,3 +77,4 @@ do
   let loop+=1
 done
   
+../compute.sh
