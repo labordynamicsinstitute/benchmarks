@@ -3,11 +3,27 @@
 /* Use this define the parameters for the benchmark SAS program */
 libname INPUTS (WORK);
 * libname INPUTS "/path/to/inputs";
-libname INTERWRK (WORK);
+%let interwrk=%sysfunc(pathname(WORK))/job&sysjobid.;
+x mkdir -p &interwrk.;
+libname INTERWRK "&interwrk.";
 * libname INTERWRK "/tmp/job&sysjobid.";
 * libname INTERWRK "/path/to/interwrk";
 libname OUTPUTS (WORK);
 * libname OUTPUTS "/path/to/outputs";
+
+
+/* this should do cleanup at the end */
+/* it is here, since it could be very */
+/* destructive if it tried to clean up*/
+/* a common area. Take care when writing*/
+/* modifying it. */
+%macro cleanup;
+
+/* assumes that interwrk is per-job */
+x rm -rf &interwrk.;
+
+%mend;
+
 
 %let size=&sysparm;
 

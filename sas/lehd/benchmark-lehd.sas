@@ -116,5 +116,7 @@ var x x1-x&nvars.;
 output out=INTERWRK.summarize_wide_file sum=;
 run;
 
+%cleanup;  /* this has to be defined in the config program */
 
 endsas;
+

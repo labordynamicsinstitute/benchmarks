@@ -43,12 +43,14 @@ fi
 # logs should be written to the current dir (mytest-no1)
 progdir=$(dirname $0)/..
 logdir=$(dirname $0)
+delay=0
 
 # print out config
 echo " Running benchmark test with following parameters:"
 echo "  Workdir=$workdir"
 echo "  Progdir=$progdir"
 echo "  Logdir =$logdir"
+echo "  Delay  =$delay (in seconds, between launching of jobs)"
 echo " The following parameter will be passed through to the SAS program:"
 echo "  (size=) $size"
 
@@ -69,6 +71,7 @@ do
     pids="$pids $pid"
     echo " Loop: $loop/$loops    Thread: $thread/$threads    PID: $pid  "
     let thread+=1
+    sleep $delay
   done
 
   printf "\n%-50s" " Waiting for PIDS $pids"
