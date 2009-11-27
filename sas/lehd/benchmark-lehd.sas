@@ -106,14 +106,14 @@ data INTERWRK.copy_wide_file;
      set INPUTS.create_wide_file;
 run;
 
-proc sort data=INTERWRK.copy_wide_file out=INTERWRK.sort_copy_wide_file;
+proc sort data=INTERWRK.copy_wide_file out=INPUTS.sort_copy_wide_file;
 by x1 x&nvars2 x&nvars.;
 run;
 
-proc summary data=INTERWRK.create_wide_file;
+proc summary data=INPUTS.create_wide_file;
 class flagn;
 var x x1-x&nvars.;
-output out=OUTPUTS.summarize_wide_file sum=;
+output out=INTERWRK.summarize_wide_file sum=;
 run;
 
 
