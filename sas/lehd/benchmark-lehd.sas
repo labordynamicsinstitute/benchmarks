@@ -53,7 +53,7 @@ $HeadURL$
 
 /* this will show all sas options, most notably memsize, sumsize,
 realmemsize, sortsize, cpucount and others */
-
+%put %sysfunc(sysget(HOSTNAME));
 Proc options;run;
 
 libname _all_ list; /* lists the physical paths of all the current
