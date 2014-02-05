@@ -1,0 +1,11 @@
+#!/bin/bash
+#PBS -l walltime=01:00:00
+#PBS -l ncpus=4
+#PBS -q premium
+#PBS -l nodes=compute-0-4
+R=/usr/bin/R
+THOME=/cac/contrib/R-3.0.2/build/
+tag=gnu
+cd $THOME/testing
+hostname > R-benchmark-25.${tag}.$(date +%F).Rout
+$R --vanilla < R-benchmark-25.R >> R-benchmark-25.${tag}.$(date +%F).Rout

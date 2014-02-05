@@ -1,0 +1,12 @@
+#!/bin/bash
+#PBS -l walltime=01:00:00
+#PBS -l ncpus=4
+#PBS -q premium
+#PBS -l nodes=compute-0-4
+R=/cac/contrib/R-3.0.2-MKL/MP/bin/R
+THOME=/cac/contrib/R-3.0.2/build
+tag=mkl-mp-4t
+cd $THOME/testing
+hostname > R-benchmark-25.${tag}.$(date +%F).Rout
+export OMP_NUM_THREADS=4
+$R --vanilla < R-benchmark-25.R >> R-benchmark-25.${tag}.$(date +%F).Rout
