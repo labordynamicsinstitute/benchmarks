@@ -4,8 +4,7 @@
 #PBS -q premium
 #PBS -l nodes=compute-0-4
 R=/usr/bin/R
-THOME=$HOME
 tag=gnu
-cd $THOME/testing/svn
+cd $PBS_O_WORKDIR
 hostname > R-benchmark-25.${tag}.$(date +%F).Rout
 $R --vanilla < R-benchmark-25.R >> R-benchmark-25.${tag}.$(date +%F).Rout

@@ -3,10 +3,10 @@
 #PBS -l ncpus=8
 #PBS -q premium
 #PBS -l nodes=compute-0-4
-R=/cac/contrib/R-3.0.2-MKL/MP/bin/R
-THOME=/cac/contrib/R-3.0.2/build
+module load R/MKL/MP
+R=R
 tag=mkl-mp-8t
-cd $THOME/testing
+cd $PBS_O_WORKDIR
 hostname > R-benchmark-25.${tag}.$(date +%F).Rout
 export OMP_NUM_THREADS=8
 $R --vanilla < R-benchmark-25.R >> R-benchmark-25.${tag}.$(date +%F).Rout

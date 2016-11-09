@@ -3,7 +3,8 @@
 #PBS -l ncpus=1
 #PBS -q premium
 #PBS -l nodes=compute-0-4
-R=/cac/contrib/R-3.0.2-MKL/bin/R
-cd $HOME/testing
+module load R/MKL/MP
+R=R
+cd $PBS_O_WORKDIR
 hostname > R-benchmark-Revo.$(date +%F).Rout
 $R --vanilla < R-benchmark-Revo.R >> R-benchmark-Revo.$(date +%F).Rout

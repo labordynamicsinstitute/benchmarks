@@ -4,9 +4,8 @@
 #PBS -q premium
 #PBS -l nodes=compute-0-4
 R=/cac/contrib/R-3.0.2-MKL/NOMP/bin/R
-THOME=$HOME
 tag=mkl
-cd $THOME/testing/svn
+cd $PBS_O_WORKDIR
 hostname > R-benchmark-25.${tag}.$(date +%F).Rout
 export OMP_NUM_THREADS=1
 $R --vanilla < R-benchmark-25.R >> R-benchmark-25.${tag}.$(date +%F).Rout

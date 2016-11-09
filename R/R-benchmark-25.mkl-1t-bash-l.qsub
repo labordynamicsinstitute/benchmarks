@@ -5,9 +5,8 @@
 #PBS -l nodes=compute-0-4
 module load R/MKL/MP
 R=R
-THOME=$HOME
 tag=mkl-mp-1t-l
-cd $THOME/testing/svn
+cd $PBS_O_WORKDIR
 hostname > R-benchmark-25.${tag}.$(date +%F).Rout
 export OMP_NUM_THREADS=1
 $R --vanilla < R-benchmark-25.R >> R-benchmark-25.${tag}.$(date +%F).Rout

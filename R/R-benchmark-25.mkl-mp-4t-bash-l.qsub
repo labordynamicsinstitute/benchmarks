@@ -6,9 +6,8 @@
 #R=/cac/contrib/R-3.0.2-MKL/MP/bin/R
 module load R/MKL/MP
 R=R
-THOME=$HOME
 tag=mkl-mp-4t-l
-cd $THOME/testing/svn
+cd $PBS_O_WORKDIR
 hostname > R-benchmark-25.${tag}.$(date +%F).Rout
 export OMP_NUM_THREADS=4
 $R --vanilla < R-benchmark-25.R >> R-benchmark-25.${tag}.$(date +%F).Rout
