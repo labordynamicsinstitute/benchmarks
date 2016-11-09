@@ -1,11 +1,14 @@
-#!/bin/bash
+#!/bin/bash -l
 #PBS -l walltime=01:00:00
 #PBS -l ncpus=4
 #PBS -q premium
 #PBS -l nodes=compute-0-4
-R=/usr/bin/R
+#R=/cac/contrib/R-3.0.2-MKL/MP/bin/R
+module load R/MKL/MP
+R=R
 THOME=$HOME
-tag=gnu
+tag=mkl-mp-4t-l
 cd $THOME/testing/svn
 hostname > R-benchmark-25.${tag}.$(date +%F).Rout
+export OMP_NUM_THREADS=4
 $R --vanilla < R-benchmark-25.R >> R-benchmark-25.${tag}.$(date +%F).Rout
