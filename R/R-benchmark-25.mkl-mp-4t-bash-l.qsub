@@ -4,6 +4,7 @@
 #PBS -q premium
 #PBS -l nodes=compute-0-4
 #R=/cac/contrib/R-3.0.2-MKL/MP/bin/R
+source /etc/profile.d/modules.sh
 module load R/MKL/MP
 R=R
 tag=mkl-mp-4t-l

@@ -3,6 +3,7 @@
 #PBS -l ncpus=1
 #PBS -q premium
 #PBS -l nodes=compute-0-4
+source /etc/profile.d/modules.sh
 module load R/MKL/MP
 R=R
 tag=mkl-mp-1t-l
