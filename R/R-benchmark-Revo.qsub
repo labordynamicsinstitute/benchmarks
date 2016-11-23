@@ -1,15 +1,15 @@
 #!/bin/bash -l
 #PBS -l walltime=01:00:00
 #PBS -q premium
-#PBS -l nodes=compute-0-4:ppn=4
+#PBS -l nodes=compute-0-4:ppn=12
 source /etc/profile.d/modules.sh
 module load R/MKL/MP
 R=R
 
-tag=mkl-mp-${PBS_NUM_PPN}t-l
+tag=mkl-mp-${PBS_NP}t-l
 cd $PBS_O_WORKDIR
 logfile=R-benchmark-Revo.$(date +%F)-$(hostname)-$tag.Rout
-export OMP_NUM_THREADS=${PBS_NUM_PPN}
+export OMP_NUM_THREADS=${PBS_NP}
 hostname > $logfile
 $R --vanilla < R-benchmark-Revo.R >> $logfile
 echo "-------------" >> $logfile
