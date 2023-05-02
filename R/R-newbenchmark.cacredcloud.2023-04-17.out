@@ -1,0 +1,5 @@
+           test replications elapsed relative user.self sys.self
+3 linear system         1000  67.595    1.000    65.649    1.669
+1            lm         1000  80.220    1.187    76.270    2.254
+2 pseudoinverse         1000  67.752    1.002    69.396    1.839
+There were 50 or more warnings (use warnings() to see the first 50)
