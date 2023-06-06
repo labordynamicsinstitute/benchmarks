@@ -1,0 +1,4 @@
+           test replications elapsed relative user.self sys.self
+3 linear system         1000   53.28    1.000     47.64     1.00
+1            lm         1000   54.23    1.018     42.02     0.65
+2 pseudoinverse         1000   53.45    1.003     44.49     0.60
