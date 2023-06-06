@@ -1,0 +1,52 @@
+4de8e08b0c85
+
+R version 4.2.1 (2022-06-23) -- "Funny-Looking Kid"
+Copyright (C) 2022 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> # https://www.alexejgossmann.com/benchmarking_r/
+> library(rbenchmark)
+> size = 1000000
+> 
+> benchmark("lm" = {
++             X <- matrix(rnorm(size), 100, 10)
++             y <- X %*% sample(1:10, 10) + rnorm(100)
++             b <- lm(y ~ X + 0)$coef
++           },
++           "pseudoinverse" = {
++             X <- matrix(rnorm(size), 100, 10)
++             y <- X %*% sample(1:10, 10) + rnorm(100)
++             b <- solve(t(X) %*% X) %*% t(X) %*% y
++           },
++           "linear system" = {
++             X <- matrix(rnorm(size), 100, 10)
++             y <- X %*% sample(1:10, 10) + rnorm(100)
++             b <- solve(t(X) %*% X, t(X) %*% y)
++           },
++           replications = 1000,
++           columns = c("test", "replications", "elapsed",
++                       "relative", "user.self", "sys.self"))
+           test replications elapsed relative user.self sys.self
+3 linear system         1000  31.945    1.000    30.826    1.566
+1            lm         1000  32.062    1.004    30.890    1.105
+2 pseudoinverse         1000  33.165    1.038    86.324  244.555
+> 
+> #            test replications elapsed relative user.self sys.self
+> # 3 linear system         1000   0.167    1.000     0.208    0.240
+> # 1            lm         1000   0.930    5.569     0.952    0.212
+> # 2 pseudoinverse         1000   0.240    1.437     0.332    0.612
+> 
