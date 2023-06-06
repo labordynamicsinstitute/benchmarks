@@ -11,6 +11,6 @@ exit 1
 fi
 
 R=R
-tag=gnu
+tag=$1
 hostname > R-newbenchmark.${tag}.$(date +%F).Rout
 $R < new-benchmark.R >> R-newbenchmark.${tag}.$(date +%F).Rout
